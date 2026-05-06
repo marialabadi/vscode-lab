@@ -1,33 +1,20 @@
- package mecheri.informatique;
+package org.example;
+import java.util.Arrays;
 
 public class App {
-
-    public double calculateSum(double num1, double num2) {
-        return num1 + num2;
-    }
-
-    public double calculateProduct(double num1, double num2) {
-        return num1 * num2;
-    }
-
-    public double calculateRatio(double sum, double product) {
-        if (product == 0) {
-            throw new ArithmeticException("Division by zero is not allowed");
-        }
-        return sum / product;
-    }
-
-    public void displayResult(double result) {
-        System.out.println("The final result is: " + result);
-    }
-
     public static void main(String[] args) {
-        App myApp = new App();
+        // 1. إنشاء زبون (Maria عضو في النادي)
+        Customer customer = new Customer("Maria", true);
 
-        double sum = myApp.calculateSum(10, 5);
-        double product = myApp.calculateProduct(10, 5);
-        double result = myApp.calculateRatio(sum, product);
+        // 2. إنشاء بعض المشتريات
+        Item item1 = new Item("Laptop", 1200.00, 1);
+        Item item2 = new Item("Mouse", 25.00, 2);
 
-        myApp.displayResult(result);
+        // 3. إنشاء الطلب وجمع العناصر فيه
+        Order order = new Order(customer, Arrays.asList(item1, item2));
+
+        // 4. تشغيل المعالج لطباعة الفاتورة
+        OrderProcessor processor = new OrderProcessor();
+        processor.printOrderSummary(order);
     }
-}
+}ٍ
